@@ -35,10 +35,12 @@ body{
 .bg-index-start,.bg-index-instructions{
   background: rgba(255,255,255,0.8);
   box-shadow: 5px 5px 4px #000;
+  transition:all 0.6s;
 }
 .bg-index-start:hover,.bg-index-instructions:hover{
   background: rgba(255,255,255,1);
-  box-shadow: inset 5px 5px 2px #000;
+  box-shadow: 1px 1px 1px #000;
+  transition:all 0.6s;
 }
 /*END INDEX*/
 
@@ -90,6 +92,48 @@ transition:all 0.6s;
   background-color:rgba(255,255,255,0.8);
   color:#000000;
   transition:all 0.4s;
+}
+  /*END INSTRUCTIONS*/
+
+  /*SETTINGS*/
+.bg-settings-brain{
+  background-image: url(../images/brain-red.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  height: 30rem;
+  width: 30rem;
+}
+
+.box-container-form-settings{
+  min-height:100vh;
+  width:100vw;
+}
+
+.box-form-settings{
+background-color: rgba(0,0,0,0.6);
+}
+  /*END SETTINGS*/
+.input-name{
+  color:#f82646;
+  background-color: #000;
+  border: 1px solid #f82646;
+  border-radius: 15px;
+  padding: 0.6rem;
+}
+
+.input-name::placeholder{
+  color: #f82646;
+}
+
+
+.form-radiobutton-label{
+  color: #f82646;
+}
+
+.form-radiobutton{
+  background-color:#f82646 ;
+  border: #f82646;
 }
 
 @media screen and (max-width:1000px){
