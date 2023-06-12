@@ -101,7 +101,9 @@ transition:all 0.6s;
 
 @media screen and (max-width:768px){
 
-
+.title-button{
+font-size:2.6rem;
+}
 
   .box-back{
     position: inherit;
