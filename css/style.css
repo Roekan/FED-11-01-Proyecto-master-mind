@@ -20,6 +20,12 @@ body{
 
 /*INDEX*/
 
+
+.game-title,.bg-instruction-title,.bg-instruction-subtitle,.p-instructions-text,.box-back-link a,.level-title,.form-radiobutton-label, .param-info-user, .texto-info-user{
+  user-select: none;
+}
+
+
 .title-button{
   color: #fff;
 }
@@ -149,7 +155,9 @@ background-color: rgba(0,0,0,0.8);
   border-radius: 15px;
   padding: 0.6rem;
   text-align: center;
+  caret-color: rgba(255,255,255,0.5);
 }
+
 
 .input-name::placeholder{
   color: rgba(255,255,255,0.5);
@@ -172,8 +180,21 @@ background-color: rgba(0,0,0,0.8);
   background-color: #000;
   background: url("../images/icon-brain.svg"); 
   background-size: contain;
-  /* --bs-form-check-bg-image: url("../images/icon-brain.svg"); */
 } 
+
+.box-colorpicker input{
+  padding:2px;
+  border-radius: 50%;
+  background-color: #000;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+
+}
+
+
+
+
 
 .btn-comenzar-partida{
   background-color:rgba(0,0,0,1);
@@ -199,6 +220,9 @@ background-color: rgba(0,0,0,0.8);
   min-height:100vh;
   width:100vw;
 }
+
+
+
 
 .bg-user-info{
   background: rgb(238,126,51);
@@ -235,14 +259,16 @@ background-color: rgba(0,0,0,0.8);
   height: 2rem;
   width: 2rem;
   margin: 5px;
-  background-color: aqua;
+  border: 2px solid #fff;
+  background-color: rgba(255,255,255,0.3);
+
 }
 
 .clues {
   display: grid; 
   grid-template-columns: 1fr 1fr; 
   align-content: center;
-gap: 4px;
+  gap: 4px;
 }
 
 
