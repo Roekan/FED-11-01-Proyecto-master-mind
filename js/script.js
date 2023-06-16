@@ -10,7 +10,7 @@ let colours = 4;
 
 for(let i=1;i<=colours;i++){
     coloursBoard.innerHTML+=`
-    <div class="col-2 d-flex justify-content-center align-items-center box-colorpicker">
+    <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker">
                     <input class="color" type="color">
     </div>`;
 }
@@ -35,7 +35,7 @@ const changeColours=() =>{
     coloursBoard.innerHTML=""
     for(let i=1;i<=colours;i++){
         coloursBoard.innerHTML+=`
-        <div class="col-2 d-flex justify-content-center align-items-center box-colorpicker"><input  type="color" class="color"></div>`;
+        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker"><input  type="color" class="color"></div>`;
     }
 }
 
