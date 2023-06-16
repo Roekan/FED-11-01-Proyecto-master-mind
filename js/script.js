@@ -11,7 +11,7 @@ let colours = 4;
 for(let i=1;i<=colours;i++){
     coloursBoard.innerHTML+=`
     <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker">
-                    <input type="color">
+                    <input class="color" type="color">
     </div>`;
 }
 
@@ -35,9 +35,7 @@ const changeColours=() =>{
     coloursBoard.innerHTML=""
     for(let i=1;i<=colours;i++){
         coloursBoard.innerHTML+=`
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker">
-                        <input class="color" type="color">
-        </div>`;
+        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker"><input  type="color" class="color"></div>`;
     }
 }
 
@@ -49,16 +47,15 @@ const changeColours=() =>{
 const saveData = () => {
     let inputName = document.getElementById("name").value;
     let inputDificultad = valorActivo = document.querySelector('input[name="radioButton"]:checked').value;
-
     let colorCollection = document.getElementsByClassName("color");
     //Transformar HTMLCollection a un Array
     let arrayColours = Array.from(colorCollection).map(item=>item.value);
-console.log(arrayColours)
+//
 
 sessionStorage.setItem("nombre", inputName);
 sessionStorage.setItem("dificultad", inputDificultad);
 sessionStorage.setItem("colores", JSON.stringify(arrayColours));
 
-//window.location.href = "../pages/mastermind.html";
+window.location.href = "../pages/mastermind.html";
 
 }
