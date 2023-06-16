@@ -7,7 +7,7 @@ let level = document.getElementById("level");
 let nameSession = sessionStorage.getItem("nombre");
 let levelSessionType = sessionStorage.getItem("dificultad");
 let arrayColours = JSON.parse(sessionStorage.getItem("colores"));
-
+console.log(arrayColours)
 let levelSession ='';
 let quantityRows=0;
 let quantityColours=0;
@@ -28,7 +28,7 @@ const checkColours=()=>{
 Array.from(document.getElementById(`row-${activeRow}`).getElementsByClassName('chip')).forEach((element,i)=>{
     coloursUser[i+1] = rgbToHex(element.style.backgroundColor)
 })
-
+console.log(coloursUser)
 
 //comprobar colores con objeto colorBoss y pintar las clues
 //cambiar de activeRow
@@ -110,9 +110,7 @@ const eraseEventColours=()=>{
 
 for(let i=1;i<=quantityChips;i++){
     coloursBoss[i]=getRandomColor(arrayColours);
-
 }
-
 console.log(`Colores de la máquina: `, coloursBoss)
 //let arrayColours=['red','blue','yellow','green','purple','orange']
 

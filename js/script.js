@@ -34,13 +34,11 @@ const changeColours=() =>{
     }
     coloursBoard.innerHTML=""
     for(let i=1;i<=colours;i++){
-
         coloursBoard.innerHTML+=`
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker">
                         <input class="color" type="color">
         </div>`;
     }
-
 }
 
 
@@ -55,16 +53,12 @@ const saveData = () => {
     let colorCollection = document.getElementsByClassName("color");
     //Transformar HTMLCollection a un Array
     let arrayColours = Array.from(colorCollection).map(item=>item.value);
-
-    
-
-
-//
+console.log(arrayColours)
 
 sessionStorage.setItem("nombre", inputName);
 sessionStorage.setItem("dificultad", inputDificultad);
 sessionStorage.setItem("colores", JSON.stringify(arrayColours));
 
-window.location.href = "../pages/mastermind.html";
+//window.location.href = "../pages/mastermind.html";
 
 }
