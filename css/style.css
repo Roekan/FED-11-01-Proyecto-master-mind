@@ -327,7 +327,7 @@ background-color: rgba(0,0,0,0.8);
 }
 
 .bg-board{
-  background-color: black;
+  background-color: #222;
 }
 
 .box-check{
@@ -361,7 +361,7 @@ background-color: rgba(0,0,0,0.8);
   border-radius: 50%;
   height: 0.5rem;
   width: 0.5rem;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.2);
 }
 
 
@@ -384,12 +384,18 @@ font-size:2rem;
 border-radius: 50%;
 }
 
-  .box-back{
-    position: inherit;
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 1rem;
-  }
+.box-back{
+  position: inherit;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+}
 
-  
+.box-form-settings:hover{
+  background-color:rgba(0,0,0,0.8);
+}
+
+
+
+
 }

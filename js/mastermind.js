@@ -13,7 +13,7 @@ let levelSession = "";
 let quantityRows = 0;
 let quantityColours = 0;
 //elemento tablero
-let boxBoard= document.getElementById("boxBoard");
+let boxBoard = document.getElementById("boxBoard");
 let board = document.getElementById("board");
 const quantityChips = 4;
 
@@ -23,6 +23,7 @@ let coloursUser = {};
 let coloursBoss = {};
 //Fila activa en la que jugamos
 let activeRow = 0;
+
 /*////////////////////END VARIABLES //////////////////////*/
 
 /*/////////////////FUNCIONES//////////////////// */
@@ -37,10 +38,62 @@ const checkColours = () => {
     coloursUser[i + 1] = rgbToHex(element.style.backgroundColor);
   });
 
-  console.log(coloursUser);
+  console.log(coloursUser); ////QUITAR AL FINAL
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   //comprobar colores con objeto colorBoss y pintar las clues
-  //cambiar de activeRow
+
+  //Copia de coloursBoss para contar primero las clues negras y luego las blancas
+  let objectBossCopy = { ...coloursBoss };
+  let objectUserCopy = { ...coloursUser };
+  let arrayClues = [];
+
+  //Comprobar cuantas Fichas negras hemos obtenido en la jugada
+  Object.keys(objectBossCopy).forEach((chip) => {
+    if (objectUserCopy[chip] && objectUserCopy[chip] === objectBossCopy[chip]) {
+      console.log("fichaNegra"); ////QUITAR AL FINAL
+      delete objectBossCopy[chip];
+      delete objectUserCopy[chip];
+      arrayClues.push("red");
+    }
+  });
+    //Comprobar cuantas Fichas blancas hemos obtenido en la jugada
+  Object.keys(objectBossCopy).forEach((chipBoss) => {
+    Object.keys(objectUserCopy).forEach((chipUser) => {
+      if (objectUserCopy[chipUser] && objectUserCopy[chipUser] === objectBossCopy[chipBoss]) {
+        console.log("fichaBlanca"); ////QUITAR AL FINAL
+        delete objectBossCopy[chipBoss];
+        delete objectUserCopy[chipUser];
+        arrayClues.push("white");
+      }
+    });
+  });
+
+let clues = Array.from(document.getElementById(`row-${activeRow}`).getElementsByClassName('clue'));
+
+
+
+clues.forEach((clue, i) => {
+
+    if(arrayClues[i]){
+        clue.style.background=arrayClues[i]
+    }
+
+        
+});
+
+
+
+
+
+
+
+
+
+
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Cambiar de active row
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Elimina el evento en la fila
   eraseEventColours();
@@ -53,7 +106,7 @@ const checkColours = () => {
     // Si es la ultima fila (el ultimo intento), mostramos mensaje de que ha perdido
     console.log(
       "////////////////////////////////////HAS PERDIDO//////////////////////////////////////"
-    );
+    ); ////QUITAR AL FINAL
   } else {
     //Si no es la ultima fila hacemos visible el boton del check
     document.getElementById(`check-${activeRow}`).classList.remove("d-none");
@@ -122,31 +175,30 @@ const eraseEventColours = () => {
 /*/////////////////END FUNCIONES//////////////////// */
 
 ///////////////////////////////CÓDIGO//////////////////////////////////
-
 //Genero la jugada del BOSS
 for (let i = 1; i <= quantityChips; i++) {
   coloursBoss[i] = getRandomColor(arrayColours);
 }
-console.log(`Colores de la máquina: `, coloursBoss);
+console.log(`Colores de la máquina: `, coloursBoss); ////COMPROBACION COLORES BOSS
 //Genero la cantidad de filas y colores segun la dificultad que recibo de settings
 switch (levelSessionType) {
   case "1":
     levelSession = "Fácil";
     quantityRows = 10;
     quantityColours = 4;
-    boxBoard.classList.add('boxBoard-easy')
+    boxBoard.classList.add("boxBoard-easy");
     break;
   case "2":
     levelSession = "Medio";
     quantityRows = 8;
     quantityColours = 5;
-    boxBoard.classList.add('boxBoard-medium')
+    boxBoard.classList.add("boxBoard-medium");
     break;
   case "3":
     levelSession = "Difícil";
     quantityRows = 6;
     quantityColours = 6;
-    boxBoard.classList.add('boxBoard-hard')
+    boxBoard.classList.add("boxBoard-hard");
     break;
   default:
     levelSession = "No especificado";
@@ -162,7 +214,7 @@ for (let i = 1; i <= quantityRows; i++) {
   board.innerHTML += `
     <div id="row-${i}" class="container-fluid d-flex">
         <div class="clues me-3">
-            <div class="clue d-flex justify-content-center align-items-center"></div>
+            <div class="clue"></div>
             <div class="clue"></div>
             <div class="clue"></div>
             <div class="clue"></div>
