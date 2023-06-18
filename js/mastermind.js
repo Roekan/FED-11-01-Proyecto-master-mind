@@ -69,18 +69,31 @@ const checkColours = () => {
     });
   });
 
-let clues = Array.from(document.getElementById(`row-${activeRow}`).getElementsByClassName('clue'));
+let cluesHTML = Array.from(document.getElementById(`row-${activeRow}`).getElementsByClassName('clue'));
 
-
-
-clues.forEach((clue, i) => {
-
+cluesHTML.forEach((clue, i) => {
     if(arrayClues[i]){
         clue.style.background=arrayClues[i]
-    }
-
-        
+    }  
 });
+
+
+if(arrayClues.length==quantityChips && !arrayClues.includes('white') ){
+
+    const myModal = new bootstrap.Modal(document.getElementById('myModal'))
+
+    // const myModal = new bootstrap.Modal('#myModal', {
+    //     keyboard: false
+    //   })
+
+    console.log('Has ganado')
+
+    myModal.show()
+
+
+   
+}
+
 
 
 
