@@ -246,7 +246,9 @@ background-color: rgba(0,0,0,0.8);
   transition: all 0.4s;
 }
 
-
+.msgError{
+  color:#f33;
+}
 
 .btn-comenzar-partida{
   background-color:rgba(0,0,0,1);
@@ -311,8 +313,12 @@ background-color: rgba(0,0,0,0.8);
   font-weight: bold;
 }
 
+.boxBoard{
+  border-radius: 15px;
+}
 
 .boxBoard-easy{
+  
     background-image: url(../images/facil-bg.jpeg);
     background-size: 20%;
 }
@@ -328,6 +334,8 @@ background-color: rgba(0,0,0,0.8);
 
 .bg-board{
   background-color: #222;
+  box-shadow: 0px 0px 16px rgba(255,255,255,0.8);
+  border: 1px solid #fff;
 }
 
 .box-check{
@@ -364,6 +372,58 @@ background-color: rgba(0,0,0,0.8);
   background-color: rgba(255,255,255,0.2);
 }
 
+
+.mensajeModal{
+  text-align: center;
+  color: #fff;
+}
+
+.box-modal{
+  background-color: #000;
+  box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
+}
+
+.btn-modal{
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  box-shadow:5px 5px 2px  rgba(255,255,255,0.8);
+  transition:all 0.6s;
+}
+
+:not(.btn-check)+.btn:active{
+  background-color: #000;
+  border: 1px solid #fff;
+}
+
+.btn-modal:first-child:active {
+  border: 1px solid #fff;
+}
+
+.btn-modal:hover{
+  background-color: #000;
+  border: 1px solid #fff;
+  color: #fff;
+  box-shadow:5px 5px 2px  rgba(255,255,255,0.8);
+  transition:all 0.6s;
+}
+
+.btn-modal svg{
+  fill:#fff;
+  width:3rem ;
+  height:3rem;
+}
+
+.btn-close-modal{
+  fill:#fff;
+}
+
+.btn-x-modal{
+  fill:#fff;
+  opacity: 1;
+  width:40px;
+  height:40px
+}
 
 /*END MASTERMIND*/
 

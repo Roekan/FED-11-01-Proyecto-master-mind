@@ -23,13 +23,16 @@ let coloursUser = {};
 let coloursBoss = {};
 //Fila activa en la que jugamos
 let activeRow = 0;
-
+let reload = document.getElementById('reload')
 /*////////////////////END VARIABLES //////////////////////*/
 
 /*/////////////////FUNCIONES//////////////////// */
 
+
 // FUNCION para checkear los colores de cada jugada cuando clique en el check
 const checkColours = () => {
+
+
   //obtener los colores de las chips (Los obtengo  en RGB)
   Array.from(
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
@@ -57,10 +60,13 @@ const checkColours = () => {
       arrayClues.push("red");
     }
   });
-    //Comprobar cuantas Fichas blancas hemos obtenido en la jugada
+  //Comprobar cuantas Fichas blancas hemos obtenido en la jugada
   Object.keys(objectBossCopy).forEach((chipBoss) => {
     Object.keys(objectUserCopy).forEach((chipUser) => {
-      if (objectUserCopy[chipUser] && objectUserCopy[chipUser] === objectBossCopy[chipBoss]) {
+      if (
+        objectUserCopy[chipUser] &&
+        objectUserCopy[chipUser] === objectBossCopy[chipBoss]
+      ) {
         console.log("fichaBlanca"); ////QUITAR AL FINAL
         delete objectBossCopy[chipBoss];
         delete objectUserCopy[chipUser];
@@ -69,41 +75,15 @@ const checkColours = () => {
     });
   });
 
-let cluesHTML = Array.from(document.getElementById(`row-${activeRow}`).getElementsByClassName('clue'));
-
-cluesHTML.forEach((clue, i) => {
-    if(arrayClues[i]){
-        clue.style.background=arrayClues[i]
-    }  
-});
-
-
-if(arrayClues.length==quantityChips && !arrayClues.includes('white') ){
-
-    const myModal = new bootstrap.Modal(document.getElementById('myModal'))
-
-    // const myModal = new bootstrap.Modal('#myModal', {
-    //     keyboard: false
-    //   })
-
-    console.log('Has ganado')
-
-    myModal.show()
-
-
-   
-}
-
-
-
-
-
-
-
-
-
-
-
+  //Pintar las pistas (negras y blancas) para que las vea el usuario
+  let cluesHTML = Array.from(
+    document.getElementById(`row-${activeRow}`).getElementsByClassName("clue")
+  );
+  cluesHTML.forEach((clue, i) => {
+    if (arrayClues[i]) {
+      clue.style.background = arrayClues[i];
+    }
+  });
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   //Cambiar de active row
@@ -120,14 +100,46 @@ if(arrayClues.length==quantityChips && !arrayClues.includes('white') ){
     console.log(
       "////////////////////////////////////HAS PERDIDO//////////////////////////////////////"
     ); ////QUITAR AL FINAL
-  } else {
+
+    showBossColours()
+  } else if(arrayClues.length == quantityChips && !arrayClues.includes("white")){
+    //Si todas las pistas son negras es que ha ganado
+    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+    const modal = document.getElementById('endGame')
+    console.log(modal)
+    myModal.show();
+    modal.innerHTML=`<h3>¡¡Enhorabuena!!<br> has ganado esta partida</h3>`;
+    modal.classList.add('mensajeModal')
+
+
+    console.log(
+      "////////////////////////////////////HAS GANADO//////////////////////////////////////"
+    ); //
+
+    showBossColours()
+  } else{
     //Si no es la ultima fila hacemos visible el boton del check
     document.getElementById(`check-${activeRow}`).classList.remove("d-none");
     document.getElementById(`check-${activeRow}`).classList.add("d-flex");
     //Añadimos la funcion para que los chips cambien de color al hacer click
     changeColours();
   }
+  
 };
+
+
+
+//FUNCION mostrar datos del BOSS
+const showBossColours =()=>{
+
+  Object.keys(coloursBoss).forEach(color => {
+    let chip =document.getElementById(`boss-color-${color}`);
+    chip.style.backgroundColor=coloursBoss[color];
+  });
+
+
+}
+
 
 //FUNCION que genera un color del arrayde colores aleatorio
 const getRandomColor = (arrColours) =>
@@ -186,6 +198,11 @@ const eraseEventColours = () => {
   });
 };
 /*/////////////////END FUNCIONES//////////////////// */
+
+
+
+
+
 
 ///////////////////////////////CÓDIGO//////////////////////////////////
 //Genero la jugada del BOSS
@@ -246,3 +263,8 @@ for (let i = 1; i <= quantityRows; i++) {
     </div> `;
 }
 changeColours();
+
+
+reload.addEventListener('click', ()=>{
+  location.reload();
+})

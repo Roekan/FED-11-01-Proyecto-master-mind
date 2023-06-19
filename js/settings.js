@@ -49,13 +49,40 @@ const saveData = () => {
     let inputDificultad = valorActivo = document.querySelector('input[name="radioButton"]:checked').value;
     let colorCollection = document.getElementsByClassName("color");
     //Transformar HTMLCollection a un Array
-    let arrayColours = Array.from(colorCollection).map(item=>item.value);
+
+    // let arrayColours = Array.from(colorCollection).map(item=>item.value);
+
+
+
+    let arrayColours = []
+    let msgError = document.getElementById('msg-error');
+    Array.from(colorCollection).map(item=>{
+        if(!arrayColours.includes(item.value)){
+            arrayColours.push(item.value)
+        }
+    });
+    
+
+
+    if(arrayColours.length ==colours && inputName!=''){
+
+        sessionStorage.setItem("nombre", inputName);
+        sessionStorage.setItem("dificultad", inputDificultad);
+        sessionStorage.setItem("colores", JSON.stringify(arrayColours));
+        
+        window.location.href = "../pages/mastermind.html";
+
+    }else if(inputName==''){
+        msgError.innerHTML='Debes escribir un nombre para jugar'
+    }else{
+        msgError.innerHTML='No puede haber colores repetidos, <br> sería demasiado fácil'
+
+    }
 //
 
-sessionStorage.setItem("nombre", inputName);
-sessionStorage.setItem("dificultad", inputDificultad);
-sessionStorage.setItem("colores", JSON.stringify(arrayColours));
 
-window.location.href = "../pages/mastermind.html";
+
+
+
 
 }
