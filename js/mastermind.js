@@ -23,16 +23,13 @@ let coloursUser = {};
 let coloursBoss = {};
 //Fila activa en la que jugamos
 let activeRow = 0;
-let reload = document.getElementById('reload')
+let reload = document.getElementById("reload");
 /*////////////////////END VARIABLES //////////////////////*/
 
 /*/////////////////FUNCIONES//////////////////// */
 
-
 // FUNCION para checkear los colores de cada jugada cuando clique en el check
 const checkColours = () => {
-
-
   //obtener los colores de las chips (Los obtengo  en RGB)
   Array.from(
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
@@ -90,56 +87,81 @@ const checkColours = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Elimina el evento en la fila
   eraseEventColours();
+
   // Elimina el icono del check
   document.getElementById(`check-${activeRow}`).classList.remove("d-flex");
   document.getElementById(`check-${activeRow}`).classList.add("d-none");
   // Cambiamos la posicion de la fila activa
   activeRow = activeRow - 1;
+
   if (activeRow < 1) {
     // Si es la ultima fila (el ultimo intento), mostramos mensaje de que ha perdido
     console.log(
       "////////////////////////////////////HAS PERDIDO//////////////////////////////////////"
     ); ////QUITAR AL FINAL
 
-    showBossColours()
-  } else if(arrayClues.length == quantityChips && !arrayClues.includes("white")){
+    showBossColours();
+  } else if (
+    arrayClues.length == quantityChips &&
+    !arrayClues.includes("white")
+  ) {
     //Si todas las pistas son negras es que ha ganado
     const myModal = new bootstrap.Modal(document.getElementById("myModal"));
-    const modal = document.getElementById('endGame')
-    console.log(modal)
+    const modal = document.getElementById("endGame");
+    console.log(modal);
     myModal.show();
-    modal.innerHTML=`<h3>¡¡Enhorabuena!!<br> has ganado esta partida</h3>`;
-    modal.classList.add('mensajeModal')
-
+    modal.innerHTML = `<h3>¡¡Enhorabuena!!<br> has ganado esta partida</h3>`;
+    modal.classList.add("mensajeModal");
 
     console.log(
       "////////////////////////////////////HAS GANADO//////////////////////////////////////"
     ); //
 
-    showBossColours()
-  } else{
+    showBossColours();
+  } else {
+    createRow();
     //Si no es la ultima fila hacemos visible el boton del check
     document.getElementById(`check-${activeRow}`).classList.remove("d-none");
     document.getElementById(`check-${activeRow}`).classList.add("d-flex");
     //Añadimos la funcion para que los chips cambien de color al hacer click
     changeColours();
   }
-  
 };
 
-
+//Funcion crear filas
+const createRow = () => {
+  let row = document.createElement("div");
+  let before = document.getElementById(`row-${activeRow+1}`)
+  board.insertBefore(row,before);
+  row.classList.add("container-fluid", "d-flex");
+  row.setAttribute("id", `row-${activeRow}`);
+  row.innerHTML += `
+          <div class="clues me-3">
+              <div class="clue"></div>
+              <div class="clue"></div>
+              <div class="clue"></div>
+              <div class="clue"></div>
+          </div>
+          <div class="col row-board d-flex">
+              <div class="chip chip-vacio"></div>
+              <div class="chip chip-vacio"></div>
+              <div class="chip chip-vacio"></div>
+              <div class="chip chip-vacio"></div>
+          </div>
+          <div class="col row-board d-flex">
+              <button onclick="checkColours()" id=check-${activeRow} class="border border-0 p-1 align-items-center justify-content-center 
+              ${activeRow == quantityRows ? "d-flex" : "d-none"}         
+              box-check"><svg class="check-img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path fill="#fff" d="m10.6 16.2l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4l4.25 4.25ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Zm0-2h14V5H5v14ZM5 5v14V5Z"></path></svg></button>
+          </div>`;
+};
 
 //FUNCION mostrar datos del BOSS
-const showBossColours =()=>{
-
-  Object.keys(coloursBoss).forEach(color => {
-    let chip =document.getElementById(`boss-color-${color}`);
-    chip.style.backgroundColor=coloursBoss[color];
+const showBossColours = () => {
+  Object.keys(coloursBoss).forEach((color) => {
+    let chip = document.getElementById(`boss-color-${color}`);
+    chip.style.backgroundColor = coloursBoss[color];
   });
-
-
-}
-
+};
 
 //FUNCION que genera un color del arrayde colores aleatorio
 const getRandomColor = (arrColours) =>
@@ -199,11 +221,6 @@ const eraseEventColours = () => {
 };
 /*/////////////////END FUNCIONES//////////////////// */
 
-
-
-
-
-
 ///////////////////////////////CÓDIGO//////////////////////////////////
 //Genero la jugada del BOSS
 for (let i = 1; i <= quantityChips; i++) {
@@ -240,31 +257,11 @@ name.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="pa
 level.innerHTML = `<span class="texto-info-user">Nivel: </span> <span class="param-info-user">${levelSession}</span> `;
 
 //Pinta las filas segun la dificultad seleccionada
-for (let i = 1; i <= quantityRows; i++) {
-  board.innerHTML += `
-    <div id="row-${i}" class="container-fluid d-flex">
-        <div class="clues me-3">
-            <div class="clue"></div>
-            <div class="clue"></div>
-            <div class="clue"></div>
-            <div class="clue"></div>
-        </div>
-        <div class="col row-board d-flex">
-            <div class="chip chip-vacio"></div>
-            <div class="chip chip-vacio"></div>
-            <div class="chip chip-vacio"></div>
-            <div class="chip chip-vacio"></div>
-        </div>
-        <div class="col row-board d-flex">
-            <button onclick="checkColours()" id=check-${i} class="border border-0 p-1 align-items-center justify-content-center ${
-    i == quantityRows ? "d-flex" : "d-none"
-  } box-check"><svg class="check-img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path fill="#fff" d="m10.6 16.2l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4l4.25 4.25ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Zm0-2h14V5H5v14ZM5 5v14V5Z"></path></svg></button>
-        </div>
-    </div> `;
-}
+
+createRow();
+
 changeColours();
 
-
-reload.addEventListener('click', ()=>{
+reload.addEventListener("click", () => {
   location.reload();
-})
+});
