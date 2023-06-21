@@ -76,6 +76,8 @@ const saveData = () => {
         sessionStorage.setItem("dificultad", inputDificultad);
         sessionStorage.setItem("colores", JSON.stringify(arrayColours));
         
+
+        
         window.location.href = "../pages/mastermind.html";
 
     }else if(inputName==''){

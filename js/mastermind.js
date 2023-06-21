@@ -27,7 +27,7 @@ let activeRow = 0;
 let reload = document.getElementById("reload");
 
 //Div que muestra los intentos restantes
-let attempsHTML = document.getElementById("attempts");
+let attemptsHTML = document.getElementById("attempts");
 
 /*////////////////////END VARIABLES //////////////////////*/
 
@@ -101,39 +101,16 @@ const checkColours = () => {
 
   if (activeRow < 1) {
     // Si es la ultima fila (el ultimo intento), mostramos mensaje de que ha perdido
-    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
-    const modal = document.getElementById("endGame");
-
-    console.log(modal);
-    myModal.show();
-    modal.innerHTML = `<h3>¡¡Te has quedado sin intentos!!</h3>`;
-    modal.classList.add("mensajeModal");
-
-    console.log(
-      "////////////////////////////////////HAS PERDIDO//////////////////////////////////////"
-    ); ////QUITAR AL FINAL
-    attempsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn btn-primary btn-play-again-info-user btn-play-again-user"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
-    showBossColours();
+    endGame('<h3>¡¡Te has quedado sin intentos!!</h3>');
   } else if (
     arrayClues.length == quantityChips &&
     !arrayClues.includes("white")
   ) {
     //Si todas las pistas son negras es que ha ganado
-    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
-    const modal = document.getElementById("endGame");
-    console.log(modal);
-    myModal.show();
-    modal.innerHTML = `<h3>¡¡Enhorabuena!!<br> has ganado esta partida</h3>`;
-    modal.classList.add("mensajeModal");
-
-    console.log(
-      "////////////////////////////////////HAS GANADO//////////////////////////////////////"
-    ); //
-
-    showBossColours();
+    endGame('<h3>¡¡Enhorabuena!!<br> has ganado esta partida</h3>');
   } else {
     createRow();
-    attempsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
+    attemptsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
     //Si no es la ultima fila hacemos visible el boton del check
     document.getElementById(`check-${activeRow}`).classList.remove("d-none");
     document.getElementById(`check-${activeRow}`).classList.add("d-flex");
@@ -168,6 +145,24 @@ const createRow = () => {
               box-check"><svg class="check-img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path fill="#fff" d="m10.6 16.2l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4l4.25 4.25ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Zm0-2h14V5H5v14ZM5 5v14V5Z"></path></svg></button>
           </div>`;
 };
+
+
+
+//FUNCION terminar partida (Muestro mensaje en modal y muestro colores del boss)
+const endGame = (mensaje)=>{
+    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+    const modal = document.getElementById("endGame");
+
+    myModal.show();
+    modal.innerHTML = mensaje;
+    modal.classList.add("messageModal");
+
+    console.log(mensaje); ////QUITAR AL FINAL
+    attemptsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn btn-primary btn-play-again-user"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
+    attemptsHTML.classList.remove("info-user-game");
+    showBossColours();
+}
+
 
 //FUNCION mostrar datos del BOSS
 const showBossColours = () => {
@@ -274,7 +269,7 @@ activeRow = quantityRows;
 
 //Pinta Nombre del jugador y dificultad de la partida
 name.innerHTML = `<span class="text-info-user">Jugador: </span> <span class="param-info-user">${nameSession}</span> `;
-attempsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
+attemptsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
 level.innerHTML = `<span class="text-info-user">Nivel: </span> <span class="param-info-user">${levelSession}</span> `;
 
 //Pinta las filas segun la dificultad seleccionada
