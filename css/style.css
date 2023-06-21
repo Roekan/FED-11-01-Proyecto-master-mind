@@ -29,12 +29,13 @@ body{
 }
 
 /*INDEX*/
-.game-title,.bg-instruction-title,.bg-instruction-subtitle,.p-instructions-text,.box-back-link a,.level-title,.form-radiobutton-label, .param-info-user, .texto-info-user{
+.game-title,.bg-instruction-title,.bg-instruction-subtitle,.p-instructions-text,.box-back-link a,.level-title,.form-radiobutton-label, .param-info-user, .text-info-user{
   user-select: none;
+  font-family: dunkin;
 }
 
-.level-title{
-  font-family: '1up';
+.param-info-user{
+  font-size:1.2rem;
 }
 
 .buttons-title-animation-click {
@@ -245,7 +246,6 @@ fill:#fff;
 
 .bg-instruction-subtitle{
   background-color:rgba(0,0,0,1);
-  font-family: 'dunkin';
   border-radius: 10px;
   box-shadow: 0px 0px 4px rgba(255,255,255,0.8);
 }
@@ -269,7 +269,6 @@ transition:all 0.6s;
 
 .p-instructions-text{
   color: rgba(255,255,255,0.8);
-  font-family: 'dunkin';
 }
 
 .mark-instructions{
@@ -308,6 +307,7 @@ transition:all 0.6s;
 
 
 .input-name{
+  font-family:dunkin;
   color:rgba(255,255,255,1);
   background-color: #000;
   border: 1px solid rgba(255,255,255,0.8);
@@ -326,7 +326,7 @@ transition:all 0.6s;
 
 .form-radiobutton-label{
   color: rgba(255,255,255,0.8);
-  text-shadow: 2px 2px 5px  rgba(255,255,255,0.8);;
+  text-shadow: 1px 1px 2px  rgba(255,255,255,0.8);;
 }
 
 .form-radiobutton{
@@ -430,7 +430,8 @@ transition:all 0.6s;
   transition:all 0.6s;
 }
 
-.texto-info-user{
+.text-info-user{
+  font-size: 1rem;
   font-weight: bold;
 }
 
