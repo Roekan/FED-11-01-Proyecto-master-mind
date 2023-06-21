@@ -8,15 +8,24 @@ let colours = 4;
 
 
 
-for(let i=1;i<=colours;i++){
-    coloursBoard.innerHTML+=`
-    <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker">
-                    <input class="color" type="color">
-    </div>`;
+
+
+
+const createColours=()=>{
+    for(let i=1;i<=colours;i++){
+        var randomColor = (`${Math.floor(Math.random()*16777215).toString(16)}`)
+        if(randomColor.length<6){
+            while(randomColor.length<6){
+                randomColor = '0' + randomColor;
+            }
+        }
+        coloursBoard.innerHTML+=`
+        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker">
+                        <input value="#${randomColor}" class="color" type="color">
+        </div>`;
+    }
 }
-
-
-
+createColours()
 
 const changeColours=() =>{
     let levelSelected = valorActivo = document.querySelector('input[name="radioButton"]:checked').value;
@@ -33,10 +42,7 @@ const changeColours=() =>{
         break;
     }
     coloursBoard.innerHTML=""
-    for(let i=1;i<=colours;i++){
-        coloursBoard.innerHTML+=`
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center box-colorpicker"><input  type="color" class="color"></div>`;
-    }
+    createColours()
 }
 
 

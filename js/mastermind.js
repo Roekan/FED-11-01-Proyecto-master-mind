@@ -23,7 +23,12 @@ let coloursUser = {};
 let coloursBoss = {};
 //Fila activa en la que jugamos
 let activeRow = 0;
+//Boton del modal para volver a jugar
 let reload = document.getElementById("reload");
+
+//Div que muestra los intentos restantes
+let attempsHTML = document.getElementById("attempts");
+
 /*////////////////////END VARIABLES //////////////////////*/
 
 /*/////////////////FUNCIONES//////////////////// */
@@ -96,10 +101,18 @@ const checkColours = () => {
 
   if (activeRow < 1) {
     // Si es la ultima fila (el ultimo intento), mostramos mensaje de que ha perdido
+    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+    const modal = document.getElementById("endGame");
+
+    console.log(modal);
+    myModal.show();
+    modal.innerHTML = `<h3>¡¡Te has quedado sin intentos!!</h3>`;
+    modal.classList.add("mensajeModal");
+
     console.log(
       "////////////////////////////////////HAS PERDIDO//////////////////////////////////////"
     ); ////QUITAR AL FINAL
-
+    attempsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn btn-primary btn-modal"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
     showBossColours();
   } else if (
     arrayClues.length == quantityChips &&
@@ -120,6 +133,7 @@ const checkColours = () => {
     showBossColours();
   } else {
     createRow();
+    attempsHTML.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="param-info-user">${activeRow}</span> `;
     //Si no es la ultima fila hacemos visible el boton del check
     document.getElementById(`check-${activeRow}`).classList.remove("d-none");
     document.getElementById(`check-${activeRow}`).classList.add("d-flex");
@@ -131,8 +145,8 @@ const checkColours = () => {
 //Funcion crear filas
 const createRow = () => {
   let row = document.createElement("div");
-  let before = document.getElementById(`row-${activeRow+1}`)
-  board.insertBefore(row,before);
+  let before = document.getElementById(`row-${activeRow + 1}`);
+  board.insertBefore(row, before);
   row.classList.add("container-fluid", "d-flex");
   row.setAttribute("id", `row-${activeRow}`);
   row.innerHTML += `
@@ -198,13 +212,15 @@ function eventListenerChangeColor(e) {
         : //Si hay color pero no es el ultimo ponme el siguiente color del array
           arrayColours[indexColor + 1];
   }
+
+  
 }
 
 //FUNCION Añadir funcionalidad evento onclick al la fila para que cambie de color
 const changeColours = () => {
   Array.from(
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
-  ).forEach((element) => {
+  ).forEach((element) => {    
     element.style.cursor = "pointer";
     element.addEventListener("click", eventListenerChangeColor);
   });
@@ -218,6 +234,11 @@ const eraseEventColours = () => {
     element.removeEventListener("click", eventListenerChangeColor);
     element.style.cursor = "auto";
   });
+};
+
+//FUNCION recargar página
+reload = () => {
+  location.reload();
 };
 /*/////////////////END FUNCIONES//////////////////// */
 
@@ -254,6 +275,7 @@ activeRow = quantityRows;
 
 //Pinta Nombre del jugador y dificultad de la partida
 name.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="param-info-user">${nameSession}</span> `;
+attempsHTML.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="param-info-user">${activeRow}</span> `;
 level.innerHTML = `<span class="texto-info-user">Nivel: </span> <span class="param-info-user">${levelSession}</span> `;
 
 //Pinta las filas segun la dificultad seleccionada
@@ -261,7 +283,3 @@ level.innerHTML = `<span class="texto-info-user">Nivel: </span> <span class="par
 createRow();
 
 changeColours();
-
-reload.addEventListener("click", () => {
-  location.reload();
-});
