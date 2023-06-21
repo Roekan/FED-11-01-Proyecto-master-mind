@@ -27,8 +27,7 @@
           <div id="endGame" class="modal-body">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">Cerrar</button>
-            <button id="reload" type="button" class="btn btn-primary btn-modal"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button>
+            <button id="reload" type="button" onclick="reload()" class="btn btn-primary btn-modal"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button>
           </div>
         </div>
       </div>
@@ -38,7 +37,7 @@
     <!--////////////////////////////////////////////////////-->
     <div class="container-fluid box-page-mastermind bg-dark m-0 p-0">
       <div class="row d-flex justify-content-center align-items-center m-0">
-        <div class="col-12 d-flex flex-column col-box-page-mastermind">
+        <div id="boxGame" class="col-12 d-flex flex-column col-box-page-mastermind">
           <!--Info-User-->
           <div class="container-fluid bg-user-info my-3">
             <div class="row py-2 py-md-0">
@@ -57,12 +56,9 @@
           <!--ENDInfo-User-->
 
           <!--TABLERO-->
-          <div
-            id="boxBoard"
-            class="container-fluid d-flex justify-content-center align-items-center boxBoard flex-grow-1"
-          >
+          <div class="container-fluid d-flex justify-content-center align-items-center flex-grow-1" >
             <div class="row">
-              <div class="col p-3 rounded-3 bg-board">
+              <div class="col p-3 mb-5 rounded-3 bg-board ">
                 <div class="row">
                   <div id="board" class="col-12">
                     <div id="row-boss" class="container-fluid d-flex">

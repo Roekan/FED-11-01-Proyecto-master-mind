@@ -13,7 +13,7 @@ let levelSession = "";
 let quantityRows = 0;
 let quantityColours = 0;
 //elemento tablero
-let boxBoard = document.getElementById("boxBoard");
+let boxGame = document.getElementById("boxGame");
 let board = document.getElementById("board");
 const quantityChips = 4;
 
@@ -112,7 +112,7 @@ const checkColours = () => {
     console.log(
       "////////////////////////////////////HAS PERDIDO//////////////////////////////////////"
     ); ////QUITAR AL FINAL
-    attempsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn btn-primary btn-modal"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
+    attempsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn btn-primary btn-play-again-info-user btn-play-again-user"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
     showBossColours();
   } else if (
     arrayClues.length == quantityChips &&
@@ -133,7 +133,7 @@ const checkColours = () => {
     showBossColours();
   } else {
     createRow();
-    attempsHTML.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="param-info-user">${activeRow}</span> `;
+    attempsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
     //Si no es la ultima fila hacemos visible el boton del check
     document.getElementById(`check-${activeRow}`).classList.remove("d-none");
     document.getElementById(`check-${activeRow}`).classList.add("d-flex");
@@ -212,15 +212,14 @@ function eventListenerChangeColor(e) {
         : //Si hay color pero no es el ultimo ponme el siguiente color del array
           arrayColours[indexColor + 1];
   }
-
-  
 }
 
 //FUNCION Añadir funcionalidad evento onclick al la fila para que cambie de color
 const changeColours = () => {
   Array.from(
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
-  ).forEach((element) => {    
+  ).forEach((element) => {
+    
     element.style.cursor = "pointer";
     element.addEventListener("click", eventListenerChangeColor);
   });
@@ -254,19 +253,19 @@ switch (levelSessionType) {
     levelSession = "Fácil";
     quantityRows = 10;
     quantityColours = 4;
-    boxBoard.classList.add("boxBoard-easy");
+    boxGame.classList.add("boxGame-easy");
     break;
   case "2":
     levelSession = "Medio";
     quantityRows = 8;
     quantityColours = 5;
-    boxBoard.classList.add("boxBoard-medium");
+    boxGame.classList.add("boxGame-medium");
     break;
   case "3":
     levelSession = "Difícil";
     quantityRows = 6;
     quantityColours = 6;
-    boxBoard.classList.add("boxBoard-hard");
+    boxGame.classList.add("boxGame-hard");
     break;
   default:
     levelSession = "No especificado";
@@ -274,9 +273,9 @@ switch (levelSessionType) {
 activeRow = quantityRows;
 
 //Pinta Nombre del jugador y dificultad de la partida
-name.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="param-info-user">${nameSession}</span> `;
-attempsHTML.innerHTML = `<span class="texto-info-user">Jugador: </span> <span class="param-info-user">${activeRow}</span> `;
-level.innerHTML = `<span class="texto-info-user">Nivel: </span> <span class="param-info-user">${levelSession}</span> `;
+name.innerHTML = `<span class="text-info-user">Jugador: </span> <span class="param-info-user">${nameSession}</span> `;
+attempsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
+level.innerHTML = `<span class="text-info-user">Nivel: </span> <span class="param-info-user">${levelSession}</span> `;
 
 //Pinta las filas segun la dificultad seleccionada
 
