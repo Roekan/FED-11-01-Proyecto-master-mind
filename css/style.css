@@ -148,7 +148,7 @@ body{
   color: rgba(255,255,255,0.8);
 }
 
-.box-title{
+.box-btn{
   animation: bounce-top 0.9s 1.4s both;
 }
 @keyframes bounce-top {
