@@ -2,10 +2,14 @@ let gameTitle=document.getElementById('game-title')
 let btnStartGame=document.getElementById('btn-start-game')
 let btnStartInstructions=document.getElementById('btn-start-instructions')
 
-btnStartInstructions.remove('game-title-animation-load')
 
 
 
+restartAnimations=()=>{
+    btnStartInstructions.remove('game-title-animation-click')
+    btnStartGame.classList.remove('buttons-title-animation-click')
+    btnStartInstructions.classList.remove('buttons-title-animation-click')
+}
 
 
 
