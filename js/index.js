@@ -6,6 +6,7 @@ let btnStartInstructions=document.getElementById('btn-start-instructions')
 
 
 restartAnimations=()=>{
+    gameTitle.classList.add('game-title-animation-load')
     btnStartInstructions.remove('game-title-animation-click')
     btnStartGame.classList.remove('buttons-title-animation-click')
     btnStartInstructions.classList.remove('buttons-title-animation-click')
