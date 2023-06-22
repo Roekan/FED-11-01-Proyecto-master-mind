@@ -1,4 +1,8 @@
+let gameTitle=document.getElementById('game-title')
+let btnStartGame=document.getElementById('btn-start-game')
+let btnStartInstructions=document.getElementById('btn-start-instructions')
 
+btnStartInstructions.remove('game-title-animation-load')
 
 
 
@@ -7,11 +11,6 @@
 
 const animationTitle=(url) =>{
     
-    let gameTitle=document.getElementById('game-title')
-    let btnStartGame=document.getElementById('btn-start-game')
-    let btnStartInstructions=document.getElementById('btn-start-instructions')
-
-
 
     gameTitle.classList.remove('game-title-animation-load')
     gameTitle.classList.add('game-title-animation-click')
