@@ -19,7 +19,7 @@ const animationTitle=(url) =>{
     window.setTimeout(() =>  {
         window.location.href=url
     },1000); 
-   
+    
     window.setTimeout(() =>  {
         gameTitle.classList.add('game-title-animation-load')
         gameTitle.classList.remove('game-title-animation-click')
