@@ -42,6 +42,7 @@ const changeColours=() =>{
         break;
     }
     coloursBoard.innerHTML=""
+    
     createColours()
 }
 
@@ -81,9 +82,9 @@ const saveData = () => {
         window.location.href = "../pages/mastermind.html";
 
     }else if(inputName==''){
-        msgError.innerHTML='Debes escribir un nombre para jugar'
+        msgError.innerHTML='<p class="txt-error">Debes escribir un nombre para jugar</p>'
     }else{
-        msgError.innerHTML='No puede haber colores repetidos, <br> sería demasiado fácil'
+        msgError.innerHTML='<p class="txt-error">No puede haber colores repetidos, <br> sería demasiado fácil</p>'
 
     }
 //

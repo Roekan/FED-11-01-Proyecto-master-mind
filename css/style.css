@@ -317,6 +317,18 @@ transition:all 0.6s;
   padding: 0.6rem;
   text-align: center;
   caret-color: rgba(255,255,255,0.5);
+  animation: text-focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
 }
 
 
@@ -328,7 +340,7 @@ transition:all 0.6s;
 .form-radiobutton{
   background-color:rgba(255,255,255,0.8);
   border: rgba(255,255,255,0.8);
-  animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 @keyframes text-focus-in {
@@ -345,7 +357,7 @@ transition:all 0.6s;
 .form-radiobutton-label{
   color: rgba(255,255,255,0.8);
   text-shadow: 1px 1px 2px  rgba(255,255,255,0.8);
-  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 @keyframes text-focus-in {
@@ -372,6 +384,22 @@ transition:all 0.6s;
   box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
 } 
 
+.coloursBoard{
+  animation: text-focus-in 1.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
 .box-colorpicker input{
   background-color: #000;
   width: 3rem;
@@ -387,6 +415,44 @@ transition:all 0.6s;
 
 .msgError{
   color:#f33;
+}
+
+.txt-error{
+  animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes shake-bottom {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  10% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+  }
+  80% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  90% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
 }
 
 .btn-comenzar-partida{
@@ -492,7 +558,7 @@ transition:all 0.6s;
 
 .bg-board{
   background-color: #222;
-  box-shadow: 0px 0px 16px rgba(255,255,255,0.8);
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
   border: 1px solid #fff;
 }
 
@@ -504,6 +570,7 @@ transition:all 0.6s;
   width: 2rem;
   height: 2rem;
 }
+
 
 .chip{
   border-radius: 50%;
@@ -541,14 +608,8 @@ transition:all 0.6s;
   box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
 }
 
-.btn-modal{
-  width: rem;
-  background-color: #000;
-  border: 1px solid #fff;
-  border-radius: 1rem;
-  box-shadow:5px 5px 2px  rgba(255,255,255,0.8);
-  transition:all 0.6s;
-}
+
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .btn-play-again-user{
   font-family: dunkin;
@@ -580,6 +641,15 @@ transition:all 0.6s;
 :not(.btn-check)+.btn:active{
   background-color: #000;
   border: 1px solid #fff;
+}
+
+.btn-modal{
+  width: rem;
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  box-shadow:1px 1px 1px rgba(255,255,255,0.8);
+  transition:all 0.6s;
 }
 
 .btn-modal:first-child:active {

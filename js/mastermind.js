@@ -124,7 +124,7 @@ const createRow = () => {
   let row = document.createElement("div");
   let before = document.getElementById(`row-${activeRow + 1}`);
   board.insertBefore(row, before);
-  row.classList.add("container-fluid", "d-flex");
+  row.classList.add("container-fluid", "d-flex", "py-1", "my-3", "border","rounded-1");
   row.setAttribute("id", `row-${activeRow}`);
   row.innerHTML += `
           <div class="clues me-3">
