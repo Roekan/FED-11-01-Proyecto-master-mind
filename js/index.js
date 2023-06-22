@@ -12,10 +12,12 @@ const animationTitle=(url) =>{
 
     window.setTimeout(() =>  {
         window.location.href=url
-        gameTitle.classList.add('game-title-animation-load')
-        gameTitle.classList.remove('game-title-animation-click')
-        btnStartGame.classList.remove('buttons-title-animation-click')
-        btnStartInstructions.classList.remove('buttons-title-animation-click')
+
     },1000); 
     
+    gameTitle.classList.add('game-title-animation-load')
+    gameTitle.classList.remove('game-title-animation-click')
+    btnStartGame.classList.remove('buttons-title-animation-click')
+    btnStartInstructions.classList.remove('buttons-title-animation-click')
+
 }
