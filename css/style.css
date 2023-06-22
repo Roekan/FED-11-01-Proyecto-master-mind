@@ -131,6 +131,8 @@ body{
 
 .title-button{
   color: #fff;
+  user-select: none;
+  cursor: pointer;
 }
 
 .bg-index{
@@ -323,15 +325,38 @@ transition:all 0.6s;
   text-align: center;
 }
 
+.form-radiobutton{
+  background-color:rgba(255,255,255,0.8);
+  border: rgba(255,255,255,0.8);
+  animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
 
 .form-radiobutton-label{
   color: rgba(255,255,255,0.8);
-  text-shadow: 1px 1px 2px  rgba(255,255,255,0.8);;
+  text-shadow: 1px 1px 2px  rgba(255,255,255,0.8);
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
-.form-radiobutton{
-  background-color:rgba(255,255,255,0.8) ;
-  border: rgba(255,255,255,0.8);
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
 }
 
 
@@ -371,6 +396,18 @@ transition:all 0.6s;
   border: 1px solid #000;
   box-shadow:1px 1px 1px  rgba(255,255,255,0.8);
   transition:all 0.6s;
+  animation: text-focus-in 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
 }
 
 .btn-comenzar-partida:hover, .btn-comenzar-partida:active, .btn:first-child:active{
