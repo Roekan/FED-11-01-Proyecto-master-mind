@@ -9,6 +9,7 @@ const animationTitle=(url) =>{
     gameTitle.classList.remove('game-title-animation-load')
     gameTitle.classList.add('game-title-animation-click')
 
+    divBtnStartInstructions.classList.remove('box-title')
     btnStartGame.classList.add('buttons-title-animation-click')
     btnStartInstructions.classList.add('buttons-title-animation-click')
     
@@ -19,11 +20,11 @@ const animationTitle=(url) =>{
     window.setTimeout(() =>  {
         gameTitle.classList.add('game-title-animation-load')
         gameTitle.classList.remove('game-title-animation-click')
-        
+
         divBtnStartInstructions.classList.add('box-title')
         btnStartGame.classList.remove('buttons-title-animation-click')
         btnStartInstructions.classList.remove('buttons-title-animation-click')
 
-    },1000); 
+    },2000); 
 
 }
