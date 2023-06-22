@@ -10,8 +10,8 @@ const animationTitle=(url) =>{
     gameTitle.classList.remove('game-title-animation-load')
     gameTitle.classList.add('game-title-animation-click')
 
-    divBtnStartInstructions.classList.remove('box-title')
-    divBtnStartGame.classList.remove('box-title')
+    divBtnStartInstructions.classList.remove('box-btn')
+    divBtnStartGame.classList.remove('box-btn')
 
     btnStartGame.classList.add('buttons-title-animation-click')
     btnStartInstructions.classList.add('buttons-title-animation-click')
@@ -24,8 +24,8 @@ const animationTitle=(url) =>{
         gameTitle.classList.add('game-title-animation-load')
         gameTitle.classList.remove('game-title-animation-click')
 
-        divBtnStartInstructions.classList.add('box-title')
-        divBtnStartGame.classList.add('box-title')
+        divBtnStartInstructions.classList.add('box-btn')
+        divBtnStartGame.classList.add('box-btn')
 
         btnStartGame.classList.remove('buttons-title-animation-click')
         btnStartInstructions.classList.remove('buttons-title-animation-click')
