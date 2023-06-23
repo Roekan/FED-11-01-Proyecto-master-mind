@@ -37,7 +37,7 @@ Este proyecto requeria hacer el juego de MasterMind en version digital y solo pa
     <img height="50px" width="auto" src= "https://roekan.github.io/FED-11-01-Proyecto-master-mind/images/lenguajes/css-logo.png"/>
 </a>
 <a href="https://www.javascript.com/">
-    <img height="50px" width="auto" src= "https://roekan.github.io/FED-11-01-Proyecto-master-mind/images/lenguajes/css-logo.png"/>
+    <img height="50px" width="auto" src= "https://roekan.github.io/FED-11-01-Proyecto-master-mind/images/lenguajes/js-logo.png"/>
 </a>
  </div>
 
