@@ -29,13 +29,14 @@ let reload = document.getElementById("reload");
 //Div que muestra los intentos restantes
 let attemptsHTML = document.getElementById("attempts");
 
-/*////////////////////END VARIABLES //////////////////////*/
+/*//////////////////// END VARIABLES ////////////////////*/
 
-/*/////////////////FUNCIONES//////////////////// */
 
-// FUNCION para checkear los colores de cada jugada cuando clique en el check
+/*//////////////////// FUNCIONES ////////////////////*/
+
+///// FUNCION para checkear los colores de cada jugada cuando clique en el check /////
 const checkColours = () => {
-  //obtener los colores de las chips (Los obtengo  en RGB)
+  //Obtener los colores de las chips (Los obtengo  en RGB)
   Array.from(
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
   ).forEach((element, i) => {
@@ -43,11 +44,9 @@ const checkColours = () => {
     coloursUser[i + 1] = rgbToHex(element.style.backgroundColor);
   });
 
-  console.log(coloursUser); ////QUITAR AL FINAL
 
+  //--Comprobar los colores de Usuario con los del Boss
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //comprobar colores con objeto colorBoss y pintar las clues
-
   //Copia de coloursBoss para contar primero las clues negras y luego las blancas
   let objectBossCopy = { ...coloursBoss };
   let objectUserCopy = { ...coloursUser };
@@ -87,8 +86,7 @@ const checkColours = () => {
     }
   });
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //Cambiar de active row
+  //--Cambiar de fila activa
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Elimina el evento en la fila
   eraseEventColours();
@@ -96,18 +94,23 @@ const checkColours = () => {
   // Elimina el icono del check
   document.getElementById(`check-${activeRow}`).classList.remove("d-flex");
   document.getElementById(`check-${activeRow}`).classList.add("d-none");
+
   // Cambiamos la posicion de la fila activa
   activeRow = activeRow - 1;
 
   if (activeRow < 1) {
     // Si es la ultima fila (el ultimo intento), mostramos mensaje de que ha perdido
-    endGame('<h3>¡¡Te has quedado sin intentos!!</h3>');
+    endGame(
+      '<h3><span class="span-modal lh-1">Game over</span><br>¡¡Te has quedado sin intentos!!</h3>'
+    );
   } else if (
     arrayClues.length == quantityChips &&
     !arrayClues.includes("white")
   ) {
     //Si todas las pistas son negras es que ha ganado
-    endGame('<h3>¡¡Enhorabuena!!<br> has ganado esta partida</h3>');
+    endGame(
+      '<h3><span class="span-modal lh-1">Enhorabuena</span><br> ¡¡has ganado esta partida!!</h3>'
+    );
   } else {
     createRow();
     attemptsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
@@ -119,13 +122,32 @@ const checkColours = () => {
   }
 };
 
-//Funcion crear filas
+/////FUNCION crear filas/////
 const createRow = () => {
+  let arrayAnimations = [
+    "animation-enter-row-puff",
+    "animation-enter-row-bounce",
+    "animation-enter-row-scale",
+    "animation-enter-row-swing",
+    "animation-enter-row-blurred",
+  ];
+  //Creo el elemento div
   let row = document.createElement("div");
   let before = document.getElementById(`row-${activeRow + 1}`);
-  board.insertBefore(row, before);
-  row.classList.add("container-fluid", "d-flex", "py-1", "my-3", "border","rounded-1");
+  //Añado las clases
+  row.classList.add(
+    "container-fluid",
+    "d-flex",
+    "py-1",
+    "my-3",
+    "border",
+    "rounded-1",
+    "bg-row",
+    arrayAnimations[Math.floor(Math.random() * arrayAnimations.length)]
+  );
+  //Añado una id con el valor de la fila actual
   row.setAttribute("id", `row-${activeRow}`);
+  //Añado el HTML que va dentro de la fila (clues,chips y check)
   row.innerHTML += `
           <div class="clues me-3">
               <div class="clue"></div>
@@ -144,25 +166,24 @@ const createRow = () => {
               ${activeRow == quantityRows ? "d-flex" : "d-none"}         
               box-check"><svg class="check-img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path fill="#fff" d="m10.6 16.2l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4l4.25 4.25ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Zm0-2h14V5H5v14ZM5 5v14V5Z"></path></svg></button>
           </div>`;
+  //Añado la fila al tablero
+  board.insertBefore(row, before);
 };
 
+/////FUNCION terminar partida (Muestro mensaje en modal y muestro colores del boss)/////
+const endGame = (mensaje) => {
+  const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+  const modal = document.getElementById("endGame");
 
+  myModal.show();
+  modal.innerHTML = mensaje;
+  modal.classList.add("messageModal");
 
-//FUNCION terminar partida (Muestro mensaje en modal y muestro colores del boss)
-const endGame = (mensaje)=>{
-    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
-    const modal = document.getElementById("endGame");
-
-    myModal.show();
-    modal.innerHTML = mensaje;
-    modal.classList.add("messageModal");
-
-    console.log(mensaje); ////QUITAR AL FINAL
-    attemptsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn btn-primary btn-play-again-user"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
-    attemptsHTML.classList.remove("info-user-game");
-    showBossColours();
-}
-
+  console.log(mensaje); ////QUITAR AL FINAL
+  attemptsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn p-3 btn-primary btn-play-again-user"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
+  attemptsHTML.classList.remove("info-user-game");
+  showBossColours();
+};
 
 //FUNCION mostrar datos del BOSS
 const showBossColours = () => {
@@ -214,7 +235,6 @@ const changeColours = () => {
   Array.from(
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
   ).forEach((element) => {
-    
     element.style.cursor = "pointer";
     element.addEventListener("click", eventListenerChangeColor);
   });
