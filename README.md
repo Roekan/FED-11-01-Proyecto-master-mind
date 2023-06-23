@@ -9,7 +9,6 @@
     <li><a href="#vistas">Vistas</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#webgrafia">Webgrafia</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ol>
@@ -102,7 +101,6 @@ Para conseguir mi objetivo he recopilado información de:
 - [www.w3schools.com](https://www.w3schools.com/) Para algunas funciones de JS y diseños CSS
 - [blog.logrocket.com](https://blog.logrocket.com/) Para los diseños CSS
 - [www.iconhunt.site](https://www.iconhunt.site/) Para la obtencion de iconos
-- 
 
 
 También he usado herramientas de:
@@ -110,15 +108,6 @@ También he usado herramientas de:
 - [animista.net](https://animista.net/play/basic/swing) Para la creacion de animaciones CSS
 - [www.craiyon.com](https://www.craiyon.com/) Para la creacion de imagenes
 - [www.svgbackgrounds.com](https://www.svgbackgrounds.com/) Para la creacion de imagenes
-
-
-## Desarrollo:
-
-``` js
- const developer = "Alvaro Fernandez Arribas";
-
- console.log("Desarrollado por: " + developer);
-```  
 
 ## Agradecimientos:
 
