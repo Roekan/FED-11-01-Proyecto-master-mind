@@ -122,6 +122,7 @@ const checkColours = () => {
   }
 };
 
+
 /////FUNCION crear filas/////
 const createRow = () => {
   let arrayAnimations = [
@@ -170,32 +171,41 @@ const createRow = () => {
   board.insertBefore(row, before);
 };
 
+
 /////FUNCION terminar partida (Muestro mensaje en modal y muestro colores del boss)/////
 const endGame = (mensaje) => {
   const myModal = new bootstrap.Modal(document.getElementById("myModal"));
   const modal = document.getElementById("endGame");
-
+  // Muestro la ventana modal
   myModal.show();
+  // Añado el mensaje pasado por parametro (Ganado o Perdido)
   modal.innerHTML = mensaje;
+  // Añado la clase al mensaje
   modal.classList.add("messageModal");
 
-  console.log(mensaje); ////QUITAR AL FINAL
+  // Muestro en el apartado de "Intentos restantes el boton para volver a jugar"
   attemptsHTML.innerHTML = `<button id="reload" onClick="reload()" type="button" class="btn p-3 btn-primary btn-play-again-user"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path  d="M2 12a9 9 0 0 0 9 9c2.39 0 4.68-.94 6.4-2.6l-1.5-1.5A6.706 6.706 0 0 1 11 19c-6.24 0-9.36-7.54-4.95-11.95C10.46 2.64 18 5.77 18 12h-3l4 4h.1l3.9-4h-3a9 9 0 0 0-18 0Z"></path></svg> Nueva partida</button> `;
+  // Elimino la clase info-user-game para que desaparezca el fondo del div
   attemptsHTML.classList.remove("info-user-game");
+  // Muestro los colores del BOSS
   showBossColours();
 };
 
+
 //FUNCION mostrar datos del BOSS
 const showBossColours = () => {
+  //Recorro el array de colores del BOSS
   Object.keys(coloursBoss).forEach((color) => {
     let chip = document.getElementById(`boss-color-${color}`);
+    // Añado a cada chip el fondo con el color del BOSS por cada circulo
     chip.style.backgroundColor = coloursBoss[color];
   });
 };
 
-//FUNCION que genera un color del arrayde colores aleatorio
-const getRandomColor = (arrColours) =>
-  arrColours[Math.floor(Math.random() * arrColours.length)];
+
+//FUNCION que genera un color del array de colores aleatorio
+const getRandomColor = (arrColours) => arrColours[Math.floor(Math.random() * arrColours.length)];
+
 
 //FUNCION Convertir color RGB a Hexadecimal
 function rgbToHex(col) {
@@ -212,6 +222,7 @@ function rgbToHex(col) {
   }
 }
 
+
 //FUNCION  cambiar los colores al hacer click
 function eventListenerChangeColor(e) {
   // Si no hay color ponme el primero
@@ -223,77 +234,107 @@ function eventListenerChangeColor(e) {
     );
     e.target.style.backgroundColor =
       indexColor == quantityColours - 1
-        ? //Si hay color y es el ultimo del array, ponme el primer color
+        ? // Si hay color y es el ultimo del array, ponme el primer color
           arrayColours[0]
-        : //Si hay color pero no es el ultimo ponme el siguiente color del array
+        : // Si hay color pero no es el ultimo ponme el siguiente color del array
           arrayColours[indexColor + 1];
   }
 }
 
+
 //FUNCION Añadir funcionalidad evento onclick al la fila para que cambie de color
 const changeColours = () => {
   Array.from(
+    // Recorremos el array de chips de la fila en la que estamos
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
   ).forEach((element) => {
+    // Añade el estilo "pointer" para mostrar al usuario que es clicable
     element.style.cursor = "pointer";
+    // Añade el evento onclick con la funcion para cambiar los colores
     element.addEventListener("click", eventListenerChangeColor);
   });
 };
 
+
 //FUNCION Borrar evento de la fila
 const eraseEventColours = () => {
   Array.from(
+    // Recorremos el array de chips de la fila en la que estamos
     document.getElementById(`row-${activeRow}`).getElementsByClassName("chip")
   ).forEach((element) => {
+    // Elimina el evento para que no se pueda cambiar de color
     element.removeEventListener("click", eventListenerChangeColor);
+    // Eliminamos el estilo pointer para que deje de verse como clicable
     element.style.cursor = "auto";
   });
 };
+
 
 //FUNCION recargar página
 reload = () => {
   location.reload();
 };
-/*/////////////////END FUNCIONES//////////////////// */
+/*//////////////////// END FUNCIONES ////////////////////*/
 
-///////////////////////////////CÓDIGO//////////////////////////////////
+/*//////////////////// CÓDIGO ////////////////////*/
+
 //Genero la jugada del BOSS
 for (let i = 1; i <= quantityChips; i++) {
+  // Por cada posicion del array colourBoss añado un color aleatorio del arrayColours(Los elegidos por el usuario en la página de settings)
   coloursBoss[i] = getRandomColor(arrayColours);
 }
-console.log(`Colores de la máquina: `, coloursBoss); ////COMPROBACION COLORES BOSS
+
+console.log(`Colores de la máquina: `, coloursBoss); ////COMPROBACION COLORES BOSS (Dejo este código para que sea más facil la comprobacion del funcionamiento)
+
 //Genero la cantidad de filas y colores segun la dificultad que recibo de settings
 switch (levelSessionType) {
   case "1":
+    // Difucultad a mostrar
     levelSession = "Fácil";
+    // Cantidad de intentos
     quantityRows = 10;
+    // Longitud de arrayColours, cantidad de colores elegidos por el usuario en settings.html
     quantityColours = 4;
+    // Añado la clase que contiene el fondo para la dificultad fácil.
     boxGame.classList.add("boxGame-easy");
     break;
   case "2":
+    // Difucultad a mostrar
     levelSession = "Medio";
+    // Cantidad de intentos
     quantityRows = 8;
+    // Longitud de arrayColours, cantidad de colores elegidos por el usuario en settings.html
     quantityColours = 5;
+    // Añado la clase que contiene el fondo para la dificultad media.
     boxGame.classList.add("boxGame-medium");
     break;
   case "3":
+    // Difucultad a mostrar
     levelSession = "Difícil";
+    // Cantidad de intentos
     quantityRows = 6;
+    // Longitud de arrayColours, cantidad de colores elegidos por el usuario en settings.html
     quantityColours = 6;
+    // Añado la clase que contiene el fondo para la dificultad difícil.
     boxGame.classList.add("boxGame-hard");
     break;
   default:
+    // Por seguridad añado un mensaje de que no se ha especificado la dificultad.
     levelSession = "No especificado";
 }
+// La fila actual es la cantidad de filas actual y para cambiar de fila iremos restando
 activeRow = quantityRows;
 
-//Pinta Nombre del jugador y dificultad de la partida
+// Pinta  el nombre del jugador
 name.innerHTML = `<span class="text-info-user">Jugador: </span> <span class="param-info-user">${nameSession}</span> `;
+// Pinta los intentos restantes (O lo que es igual el numero de la fila en la que nos encontramos)
 attemptsHTML.innerHTML = `<span class="text-info-user">Intentos restantes: </span> <span class="param-info-user">${activeRow}</span> `;
+// Pinta la dificultad de la partida
 level.innerHTML = `<span class="text-info-user">Nivel: </span> <span class="param-info-user">${levelSession}</span> `;
 
-//Pinta las filas segun la dificultad seleccionada
-
+// Pinta la primera fila
 createRow();
-
+// Agrega el evento "onclick para que cambien los colores a la primera fila"
 changeColours();
+
+/*//////////////////// END CÓDIGO ////////////////////*/
