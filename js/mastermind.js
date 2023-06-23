@@ -126,11 +126,10 @@ const checkColours = () => {
 /////FUNCION crear filas/////
 const createRow = () => {
   let arrayAnimations = [
-    "animation-enter-row-puff",
     "animation-enter-row-bounce",
     "animation-enter-row-scale",
     "animation-enter-row-swing",
-    "animation-enter-row-blurred",
+    
   ];
   //Creo el elemento div
   let row = document.createElement("div");
