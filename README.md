@@ -113,7 +113,7 @@ También he usado herramientas de:
 
 Agradezco a mis compañeros la ayuda con este proyecto:
 
-- *Maxi*
+- *Maxi*  
 <a href="https://github.com/Maxigamble/" target="_blank"><img src="./images/github/github-green.svg" target="_blank"></a> 
 
 - *David*  
