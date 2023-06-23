@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MasterMind - Home</title>
-    <link rel="icon" href="./images/favicon.png" type="image/png" />
+    <link rel="icon" href="./images/favicon.ico" type="image/png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,41 +15,35 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-
     <div class="container-fluid box-container bg-dark d-flex justify-content-center align-items-center">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-12">
           <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-12 my-5 d-flex justify-content-center align-items-center  bg-index ">
+            <div class="col-12 my-5 d-flex justify-content-center align-items-center bg-index ">
               <div class="container-fluid">
                 <div class="row d-flex justify-content-center align-items-center">
+                  <!--Titulo-->
                   <div class="col-12 my-5 d-flex justify-content-center align-items-center rounded-5">
                     <h1 id="game-title" class=" p-3 game-title game-title-animation-load">MasterMind</h1>
                   </div>
-
+                  <!--END Titulo-->
+                  <!--Boton Iniciar partida-->
                   <div id="box-btn-start-game" class="col-12  d-flex justify-content-center align-items-center box-btn rounded-5">
                     <a id="btn-start-game" onclick="animationTitle('./pages/settings.html')" > <h2 class=" p-3 bg-index-start rounded-5 title-button text-center">Iniciar partida</h2></a>
                   </div>
+                  <!--END Boton Iniciar partida-->
+                  <!--Boton Instrucciones-->
                   <div id="box-btn-start-instructions" class="col-12 d-flex justify-content-center align-items-center box-btn rounded-5">
                     <a id="btn-start-instructions" onclick="animationTitle('./pages/instructions.html')" > <h2 class=" p-3 bg-index-instructions rounded-5 title-button text-center">Instrucciones</h2></a>
                   </div>
-                </div>
-                <div class="row d-flex justify-content-center align-items-center">
-                  <div class="col-12 my-5 d-flex justify-content-center align-items-center">
-                  </div>
-                </div>
-                <div class="row d-flex justify-content-center align-items-center">
-                  <div class="col-12 my-5 d-flex justify-content-center align-items-center">
-                  </div>
+                  <!--END Boton Instrucciones-->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
   </body>
