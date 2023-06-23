@@ -23,21 +23,30 @@ body{
   width:100vw;
   overflow-x: hidden;
 }
+/*Contenedor por defecto que hay en las paginas index.html, instructions.html y settings.html*/
 .box-container{
   min-height:100vh;
   width:100vw;
 }
-
-/*INDEX*/
+/*Tipografía de los textos y estilo para que no se puedan seleccionar*/
 .game-title,.bg-instruction-title,.bg-instruction-subtitle,.p-instructions-text,.box-back-link a,.level-title,.form-radiobutton-label, .param-info-user, .text-info-user{
   user-select: none;
   font-family: dunkin;
 }
 
-.param-info-user{
-  font-size:1.2rem;
-}
+/*INDEX*/
 
+/*Fondo de la página principal*/
+.bg-index{
+  background-image: url(../images/brain.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  height: 30rem;
+}
+/*END Fondo de la página principal*/
+
+/*Animaciones en los botones y el titulo al hacer click*/
 .buttons-title-animation-click {
 	animation: buttons-title-animation-click 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
@@ -73,16 +82,38 @@ body{
         opacity: 0;
       }
     }
+/*END Animaciones en los botones y el titulo al hacer click*/
 
+/*Estilos del título y los botones*/
 .game-title{
   background: rgba(0,0,0,1);
   box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
   border-radius: 10px;
   font-family: '1up';
   color: rgba(255,255,255,0.8);
-	
 }
 
+.title-button{
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+}
+
+.bg-index-start,.bg-index-instructions{
+  background: rgba(0,0,0,0.7);
+  box-shadow:1px 1px 1px  rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
+  transition:all 0.6s;
+  font-family: 'dunkin';
+}
+
+.bg-index-start:hover,.bg-index-instructions:hover{
+  background: rgba(0,0,0,1);
+  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);;
+  transition:all 0.6s;
+}
+/*END Estilos del título y los botones*/
+
+/*Animaciones del titulo y los botones al cargar*/
 .game-title-animation-load{
   animation: bounce 1.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) 1s backwards ;
 }
@@ -122,23 +153,6 @@ body{
         animation-timing-function: ease-out;
       }
     }
-
-
-
-.title-button{
-  color: #fff;
-  user-select: none;
-  cursor: pointer;
-}
-
-.bg-index{
-  
-  background-image: url(../images/brain.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size:contain;
-  height: 30rem;
-}
 
 .box-btn{
   animation: bounce-top 0.9s 1.4s both;
@@ -182,22 +196,13 @@ body{
     }
   }
 
-.bg-index-start,.bg-index-instructions{
-  background: rgba(0,0,0,0.7);
-  box-shadow:1px 1px 1px  rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
-  transition:all 0.6s;
-  font-family: 'dunkin';
-}
-
-.bg-index-start:hover,.bg-index-instructions:hover{
-  background: rgba(0,0,0,1);
-  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);;
-  transition:all 0.6s;
-}
+/*END Animaciones del titulo y los botones al cargar*/
 /*END INDEX*/
 
 
 /*INSTRUCTIONS*/
+
+/*Estilos del boton back*/
 .box-back{
   position: absolute;
   top:1rem;
@@ -230,7 +235,9 @@ body{
   rotate: -360deg;
   transition:all 1s;
 }
+/*END Estilos del boton back*/
 
+/*Estilos del titulo*/
 .title-instructions{
   font-family: '1up';
   color: #fff;
@@ -238,13 +245,15 @@ body{
   box-shadow: 0px 0px 16px rgba(255,255,255,0.8);
   border-radius: 10px;
 }
-
+/*END Estilos del titulo*/
+/*Estilos de los subtitulos*/
 .bg-instruction-subtitle{
   background-color:rgba(0,0,0,1);
   border-radius: 10px;
   box-shadow: 0px 0px 4px rgba(255,255,255,0.8);
 }
-
+/*END Estilos de los subtitulos*/
+/*Estilos de los divs del texto*/
 .box-instructions-text,.box-form-settings{
   border-radius: 1rem;
 color: rgba(255,255,255,1);
@@ -258,18 +267,24 @@ transition:all 0.6s;
   background-color:rgba(0,0,0,1);
   transition:all 0.6s;
 }
+/*END Estilos de los divs del texto*/
 
+/*Color del párrafo*/
 .p-instructions-text{
   color: rgba(255,255,255,0.8);
 }
+/*END Color del párrafo*/
 
+/*Estilos del svg*/
 .instructions-check-img{
   width: 2rem;
   height: 2rem;
   background-color:rgba(255,255,255,0.4);
   border-radius: 2px;
 }
+/*END Estilos del svg*/
 
+/*Estilos del span de los colores y aciertos*/
 .mark-instructions{
   background-color:rgba(255,255,255,0.6);
   color:#000;
@@ -282,9 +297,11 @@ transition:all 0.6s;
   transition:all 0.4s;
   border-radius: 2px;
 }
+/*END Estilos del span de los colores y aciertos*/
   /*END INSTRUCTIONS*/
 
   /*SETTINGS*/
+  /*Imagen de fondo*/
 .bg-settings-brain{
   background-image: url(../images/brain-red.png);
   background-position: center center;
@@ -293,7 +310,9 @@ transition:all 0.6s;
   height: 30rem;
   width: 30rem;
 }
+/*END Imagen de fondo*/
 
+/*Estilos de la caja del formulario*/
 .box-container-form-settings{
   min-height:100vh;
   width:100vw;
@@ -302,7 +321,9 @@ transition:all 0.6s;
 .box-form-settings{
   background-color: rgba(0,0,0,0.8);
 }
+/*END Estilos de la caja del formulario*/
 
+/*Estilos del input nombre y animacion*/
 .input-name{
   font-family:dunkin;
   color:rgba(255,255,255,1);
@@ -330,7 +351,9 @@ transition:all 0.6s;
   color: rgba(255,255,255,0.5);
   text-align: center;
 }
+/*END Estilos del input nombre y animacion*/
 
+/*Estilos del selector de dificultad y animacion*/
 .form-radiobutton{
   background-color:rgba(255,255,255,0.8);
   border: rgba(255,255,255,0.8);
@@ -373,7 +396,9 @@ transition:all 0.6s;
   background-size: contain;
   box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
 } 
+/*END Estilos del selector de dificultad y animacion*/
 
+/*Estilos del selector de colores y animacion*/
 .coloursBoard{
   animation: text-focus-in 1.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
@@ -400,7 +425,9 @@ transition:all 0.6s;
   box-shadow:0px 0px 5px  rgba(255,255,255,0.8);
   transition: all 0.4s;
 }
+/*END Estilos del selector de colores y animacion*/
 
+/*Estilos del mensaje de error y animacion*/
 .msgError{
   color:#f33;
 }
@@ -441,7 +468,9 @@ transition:all 0.6s;
               transform: rotate(2deg);
     }
   }
+/*END Estilos del mensaje de error y animacion*/
 
+/*Estilos del boton de comienzo y animacion*/
 .btn-begin-game{
   font-family: dunkin;
   background-color:rgba(0,0,0,1);
@@ -469,11 +498,18 @@ transition:all 0.6s;
   box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);
   transition:all 0.6s;
 }
+/*END Estilos del boton de comienzo y animacion*/
 /*END SETTINGS*/
 
 
 /*MASTERMIND*/
+/*Estilos del nombre, intentos y dificultad del juego*/
+.param-info-user{
+  font-size:1.2rem;
+}
+/*END Estilos del nombre, intentos y dificultad del juego*/
 
+/*Estilos del contenedor general de la página*/
 .box-page-mastermind{
   width:100vw;
 }
@@ -482,7 +518,9 @@ transition:all 0.6s;
   min-height: 100vh;
   width:100vw;
 }
+/*END Estilos delontenedor general de la página*/
 
+/*Estilos del banner superior con la info del usuario*/
 .bg-user-info{
   background-color: #000000;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3CradialGradient id='a' gradientUnits='objectBoundingBox'%3E%3Cstop offset='0' stop-color='%23CDCDCD'/%3E%3Cstop offset='1' stop-color='%23000000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='750' x2='50' y2='750'%3E%3Cstop offset='0' stop-color='%23676767'/%3E%3Cstop offset='1' stop-color='%23000000'/%3E%3C/linearGradient%3E%3Cpath id='s' fill='url(%23b)' d='M1549.2 51.6c-5.4 99.1-20.2 197.6-44.2 293.6c-24.1 96-57.4 189.4-99.3 278.6c-41.9 89.2-92.4 174.1-150.3 253.3c-58 79.2-123.4 152.6-195.1 219c-71.7 66.4-149.6 125.8-232.2 177.2c-82.7 51.4-170.1 94.7-260.7 129.1c-90.6 34.4-184.4 60-279.5 76.3C192.6 1495 96.1 1502 0 1500c96.1-2.1 191.8-13.3 285.4-33.6c93.6-20.2 185-49.5 272.5-87.2c87.6-37.7 171.3-83.8 249.6-137.3c78.4-53.5 151.5-114.5 217.9-181.7c66.5-67.2 126.4-140.7 178.6-218.9c52.3-78.3 96.9-161.4 133-247.9c36.1-86.5 63.8-176.2 82.6-267.6c18.8-91.4 28.6-184.4 29.6-277.4c0.3-27.6 23.2-48.7 50.8-48.4s49.5 21.8 49.2 49.5c0 0.7 0 1.3-0.1 2L1549.2 51.6z'/%3E%3Cg id='g'%3E%3Cuse href='%23s' transform='scale(0.12) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.2) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.25) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(0.3) rotate(-20)'/%3E%3Cuse href='%23s' transform='scale(0.4) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(0.5) rotate(20)'/%3E%3Cuse href='%23s' transform='scale(0.6) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.7) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.835) rotate(-40)'/%3E%3Cuse href='%23s' transform='scale(0.9) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(1.05) rotate(25)'/%3E%3Cuse href='%23s' transform='scale(1.2) rotate(8)'/%3E%3Cuse href='%23s' transform='scale(1.333) rotate(-60)'/%3E%3Cuse href='%23s' transform='scale(1.45) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(1.6) rotate(10)'/%3E%3C/g%3E%3C/defs%3E%3Cg transform='translate(900 0)'%3E%3Cg transform='translate(0 1500)'%3E%3Ccircle fill='url(%23a)' r='3000'/%3E%3Cg opacity='0.5'%3E%3Ccircle fill='url(%23a)' r='2000'/%3E%3Ccircle fill='url(%23a)' r='1800'/%3E%3Ccircle fill='url(%23a)' r='1700'/%3E%3Ccircle fill='url(%23a)' r='1651'/%3E%3Ccircle fill='url(%23a)' r='1450'/%3E%3Ccircle fill='url(%23a)' r='1250'/%3E%3Ccircle fill='url(%23a)' r='1175'/%3E%3Ccircle fill='url(%23a)' r='900'/%3E%3Ccircle fill='url(%23a)' r='750'/%3E%3Ccircle fill='url(%23a)' r='500'/%3E%3Ccircle fill='url(%23a)' r='380'/%3E%3Ccircle fill='url(%23a)' r='250'/%3E%3C/g%3E%3Cg transform='rotate(-190.8 0 0)'%3E%3Cuse href='%23g' transform='rotate(10)'/%3E%3Cuse href='%23g' transform='rotate(120)'/%3E%3Cuse href='%23g' transform='rotate(240)'/%3E%3C/g%3E%3Ccircle fill-opacity='0.32' fill='url(%23a)' r='3000'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -520,10 +558,41 @@ transition:all 0.6s;
   font-weight: bold;
 }
 
+.btn-play-again-user{
+  font-family: dunkin;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  box-shadow:1px 1px 1px rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
+  transition:all 0.6s;
+}
+
+.btn-play-again-user:first-child:active {
+  border: 1px solid #fff;
+}
+
+.btn-play-again-user:hover{
+  background: rgba(0, 0, 0, 1);
+  border: 1px solid #fff;
+  color: #fff;
+  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);
+  transition:all 0.6s;
+}
+
+.btn-play-again-user svg{
+  fill:#fff;
+  width:1.4rem ;
+  height:1.4rem;
+}
+/*END Estilos del banner superior con la info del usuario*/
+
+/*Estilos del div general para no ver findo blanco en version movil*/
 .boxGame{
   height: 100%;
 }
+/*END Estilos del div general para no ver findo blanco en version movil*/
 
+/*Estilos fondo del juego segun su dificultad*/
 .boxGame-easy{
   background-image: url(../images/facil-bg.jpeg);
   background-size: 20%;
@@ -533,11 +602,14 @@ transition:all 0.6s;
   background-image: url(../images/medio-bg.jpg);
   background-size: 20%;
 }
+
 .boxGame-hard{
   background-image: url(../images/dificil-bg.jpg);
   background-size: 20%;
 }
+/*END Estilos fondo del juego segun su dificultad*/
 
+/*Estilos del tablero de juego*/
 .bg-board{
   background-color: #222;
   box-shadow: inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12), 10px 10px 10px rgba(0, 0, 0, 0.72);
@@ -588,103 +660,7 @@ transition:all 0.6s;
   background-color: rgba(255,255,255,0.2);
 }
 
-
-.messageModal{
-  font-family: dunkin;
-  text-align: center;
-  color: #fff;
-}
-
-.span-modal{
-  font-family: '1up';
-}
-
-.box-modal{
-  background-color: #000;
-  box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
-}
-
-.btn-play-again-user{
-  font-family: dunkin;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid #fff;
-  border-radius: 1rem;
-  box-shadow:1px 1px 1px rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
-  transition:all 0.6s;
-}
-
-.btn-play-again-user:first-child:active {
-  border: 1px solid #fff;
-}
-
-.btn-play-again-user:hover{
-  background: rgba(0, 0, 0, 1);
-  border: 1px solid #fff;
-  color: #fff;
-  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);
-  transition:all 0.6s;
-}
-
-.btn-play-again-user svg{
-  fill:#fff;
-  width:1.4rem ;
-  height:1.4rem;
-}
-
-:not(.btn-check)+.btn:active{
-  background-color: #000;
-  border: 1px solid #fff;
-}
-
-.btn-modal{
-  width: rem;
-  background-color: #000;
-  border: none;
-  border-radius: 1rem;
-  box-shadow:1px 1px 1px rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);;
-  transition:all 0.6s;
-}
-
-.btn-modal:first-child:active {
-  border: none;
-}
-
-.btn-modal:hover{
-  background-color: #000;
-  border: none;
-  color: #fff;
-  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);;
-  transition:all 0.6s;
-}
-
-.btn-modal svg{
-  fill:#fff;
-  width:1.4rem ;
-  height:1.4rem;
-}
-
-.btn-close-modal{
-  fill:#fff;
-}
-
-.btn-x-modal{
-  fill:#fff;
-  opacity: 1;
-  width:40px;
-  height:40px;
-}
-
-.btn-x-modal{
-  border-radius:50% ;
-  box-shadow:0px 0px 5px  rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
-  transition:all 0.6s;
-}
-
-.btn-x-modal:hover{
-  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);
-  transition:all 0.6s;
-}
-
+/*Animaciones de entrada de las filas*/
 .animation-enter-row-puff{
   animation: puff-in-top 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
@@ -823,6 +799,80 @@ transition:all 0.6s;
       opacity: 1;
     }
   }
+  /*END Animaciones de entrada de las filas*/
+/*END Estilos del tablero de juego*/
+
+/*Estilos del mensaje de fin del juego*/
+.messageModal{
+  font-family: dunkin;
+  text-align: center;
+  color: #fff;
+}
+
+.span-modal{
+  font-family: '1up';
+}
+
+.box-modal{
+  background-color: #000;
+  box-shadow:0px 0px 16px  rgba(255,255,255,0.8);
+}
+
+
+:not(.btn-check)+.btn:active{
+  background-color: #000;
+  border: 1px solid #fff;
+}
+
+.btn-modal{
+  width: rem;
+  background-color: #000;
+  border: none;
+  border-radius: 1rem;
+  box-shadow:1px 1px 1px rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);;
+  transition:all 0.6s;
+}
+
+.btn-modal:first-child:active {
+  border: none;
+}
+
+.btn-modal:hover{
+  background-color: #000;
+  border: none;
+  color: #fff;
+  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);;
+  transition:all 0.6s;
+}
+
+.btn-modal svg{
+  fill:#fff;
+  width:1.4rem;
+  height:1.4rem;
+}
+
+.btn-close-modal{
+  fill:#fff;
+}
+
+.btn-x-modal{
+  fill:#fff;
+  opacity: 1;
+  width:40px;
+  height:40px;
+}
+
+.btn-x-modal{
+  border-radius:50% ;
+  box-shadow:0px 0px 5px  rgba(255,255,255,0.8),inset -5px -5px 15px rgba(200, 200, 200, 0.5), inset 10px 10px 15px rgba(0, 0, 0, 0.12);
+  transition:all 0.6s;
+}
+
+.btn-x-modal:hover{
+  box-shadow:5px 5px 2px  rgba(255,255,255,0.8),inset -2px -2px 10px rgba(200, 200, 200, 0.5), inset 8px 8px 13px rgba(0, 0, 0, 0.12);
+  transition:all 0.6s;
+}
+/*END Estilos del mensaje de fin del juego*/
 /*END MASTERMIND*/
 
 
